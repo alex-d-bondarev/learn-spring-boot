@@ -1,9 +1,4 @@
-<!DOCTYPE>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Grades</title>
-    <style>
-      .container {
+.container {
         position: absolute;
         left: 50%;
         top: 45%;
@@ -98,25 +93,3 @@
       body {
         background: #263238;
       }
-    </style>
-  </head>
-  <body>
-
-    <div class="topnav">
-      <a>Form</a>
-      <a>Grades</a>
-    </div>
-
-    <div class= "container">
-      <h2 > Grades </h2>
-      <table id="table">
-        <tr>
-          <th>Student</th>
-          <th>Subject</th>
-          <th>Score</th>
-        </tr>
-      </table>
-    </div>
-
-  </body>
-</html>

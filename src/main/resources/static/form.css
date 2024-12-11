@@ -1,9 +1,4 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <title>Form</title>
-    <style>
-      .container {
+.container {
         position: absolute;
         text-align: center;
         border-style: solid;
@@ -80,22 +75,3 @@
       background-color: #ddd;
       color: black;
     }
-    </style>
-  </head>
-  <body>
-    <div class="topnav">
-      <a>Form</a>
-      <a>Grades</a>
-    </div>
-    <div class="container">
-      <h2> Grade Portal </h2>
-      <form method="post">
-        <input type="text" placeholder="Name">
-        <input type="text" placeholder="Score">
-        <input type="text" placeholder="Subject">
-        <br><br>
-        <input type="submit" value="Submit">
-      </form>
-    </div>
-</body>
-</html>
