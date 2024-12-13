@@ -1,12 +1,16 @@
 package com.alex_d_bondarev.hello_spring;
 
+import java.util.Date;
 import java.util.UUID;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class GradePojo {
     private String name;
     private String subject;
     private String score;
     private String id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd") private Date dateReceived;
 
     public GradePojo(String name, String subject, String score) {
         this.name = name;
@@ -48,5 +52,13 @@ public class GradePojo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Date getDateReceived() {
+        return dateReceived;
+    }
+
+    public void setDateReceived(Date dateReceived) {
+        this.dateReceived = dateReceived;
     }
 }

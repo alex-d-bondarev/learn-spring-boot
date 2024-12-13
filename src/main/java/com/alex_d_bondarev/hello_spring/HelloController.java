@@ -5,9 +5,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -35,6 +35,7 @@ public class HelloController {
                 "grade",
                 index == Constants.NOT_FOUND ? new GradePojo() : studentGrades.get(index)
         );
+        model.addAttribute("scores", Constants.SCORE);
         return "form";
     }
 
@@ -52,13 +53,20 @@ public class HelloController {
     }
 
     @PostMapping(value = "/handleSubmit")
-    public String submitGrade(GradePojo grade) {
+    public String submitGrade(GradePojo grade, RedirectAttributes redirectAttributes) {
         Integer index = getGradeIndex(grade.getId());
-        if (index == Constants.NOT_FOUND) {
-            studentGrades.add(grade);
-        } else {
-            studentGrades.set(index, grade);
+        String status = Constants.SUCCESS_STATUS;
+        try {
+            if (index == Constants.NOT_FOUND) {
+                studentGrades.add(grade);
+            } else {
+                studentGrades.set(index, grade);
+            }
+        } catch (Exception ex) {
+            status = Constants.FAILED_STATUS;
         }
+
+        redirectAttributes.addFlashAttribute("status", status);
         return "redirect:/grades";
     }
 
