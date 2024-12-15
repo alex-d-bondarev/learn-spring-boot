@@ -11,48 +11,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class HelloController {
+public class BasicController {
 
     List<GradePojo> studentGrades = new ArrayList<>();
 
-    @GetMapping("/grade")
+    @GetMapping("/basic/grade")
     public String getGrade(Model model) {
         GradePojo grade = new GradePojo("Harry", "Potions", "C-");
         model.addAttribute("grade", grade);
-        return "grade";
+        return "basic/grade";
     }
 
-    @GetMapping("/grades")
+    @GetMapping("/basic/grades")
     public String getGrades(Model model) {
         model.addAttribute("grades", studentGrades);
-        return "grades";
+        return "basic/grades";
     }
 
-    @GetMapping("/grade/form")
+    @GetMapping("/basic/form")
     public String gradeForm(Model model, @RequestParam(required = false) String id) {
         Integer index = getGradeIndex(id);
         model.addAttribute(
                 "grade",
                 index == Constants.NOT_FOUND ? new GradePojo() : studentGrades.get(index)
         );
-        model.addAttribute("scores", Constants.SCORE);
-        return "form";
+        model.addAttribute("types", Constants.SCORE_TYPE);
+        return "basic/form";
     }
 
-    @GetMapping(value = "/conditional")
+    @GetMapping(value = "/basic/conditional")
     public String getConditional(Model model) {
         model.addAttribute("sales", 30);
         model.addAttribute("product", "chair");
-        return "conditionals";
+        return "basic/conditionals";
     }
 
-    @GetMapping(value = "/utility")
+    @GetMapping(value = "/basic/utility")
     public String getUtility(Model model) {
         model.addAttribute("menu", "We sell chocolate rice cakes bubble tea");
-        return "utility";
+        return "basic/utility";
     }
 
-    @PostMapping(value = "/handleSubmit")
+    @PostMapping(value = "/basic/handleSubmit")
     public String submitGrade(GradePojo grade, RedirectAttributes redirectAttributes) {
         Integer index = getGradeIndex(grade.getId());
         String status = Constants.SUCCESS_STATUS;
@@ -67,7 +67,7 @@ public class HelloController {
         }
 
         redirectAttributes.addFlashAttribute("status", status);
-        return "redirect:/grades";
+        return "redirect:/basic/grades";
     }
 
     public Integer getGradeIndex(String id) {

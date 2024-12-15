@@ -6,18 +6,19 @@
 </head>
 <body>
 <div class="topnav">
-    <a th:href="@{/grade/form}">Form</a>
-    <a th:href="@{/grades}">Grades</a>
+    <a th:href="@{/basic/form}">Form</a>
+    <a th:href="@{/basic/grades}">Grades</a>
 </div>
 <div class="container">
     <h2> Grade Portal </h2>
-    <form method="post" th:object="${grade}" th:action="@{/handleSubmit}">
+    <form method="post" th:object="${grade}" th:action="@{/basic/handleSubmit}">
         <input type="text" placeholder="Name" th:field="*{name}">
         <input type="text" placeholder="Subject" th:field="*{subject}">
+        <input type="text" placeholder="Score" th:field="*{score}">
         <input type="hidden" th:field="*{id}">
-        <select class="select" th:field="*{score}">
-            <option value="">Choose Score</option>
-            <option th:each="score: ${scores}" th:text="${score}" th:value="${score}"> Placeholder</option>
+        <select class="select" th:field="*{type}">
+            <option value="">Choose Type</option>
+            <option th:each="type: ${types}" th:text="${type}" th:value="${type}"> Placeholder</option>
         </select>
         <input type="date" th:field="*{dateReceived}">
         <br><br>
