@@ -7,4 +7,5 @@ public class Constants {
     public static final String[] SCORE_TYPE = new String[]{
             "major", "extra"
     };
+    public static final String[] CATEGORIES = new String[] {"Furniture", "Office Supplies", "Technology"};
 }

@@ -7,8 +7,8 @@
 <body>
 
 <div class="topnav">
-    <a th:href="@{/basic/form}">Form</a>
-    <a th:href="@{/basic/grades}">Grades</a>
+    <a th:href="@{/validate/form}">Form</a>
+    <a th:href="@{/validate/grades}">Grades</a>
 </div>
 
 <div th:if="${status} == 'success'">
@@ -28,8 +28,7 @@
             <td th:text="${grade.name}"></td>
             <td th:text="${grade.subject}"></td>
             <td th:text="${grade.score}"></td>
-            <td type="date" th:text="${#dates.format(grade.dateReceived, 'yyyy-MM-dd')}">1900-01-01</td>
-            <td><a role="button" class="update" th:href="@{/basic/form(id = ${grade.id})}">Update</a></td>
+            <td><a role="button" class="update" th:href="@{/validate/form(id = ${grade.id})}">Update</a></td>
         </tr>
     </table>
 </div>
