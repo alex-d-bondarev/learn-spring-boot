@@ -1,4 +1,4 @@
-package com.alex_d_bondarev.hello_spring;
+package com.alex_d_bondarev.hello_spring.intro;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,13 +23,13 @@ public class ValidateController {
     public String getForm(Model model, @RequestParam(required = false) String id) {
         int index = getGradeIndex(id);
         model.addAttribute("grade", index == Constants.NOT_FOUND ? new GradePojo() : studentGrades.get(index));
-        return "validate/form";
+        return "intro/validate/form";
     }
 
     @PostMapping("/validate/handleSubmit")
     public String submitForm(@Valid @ModelAttribute("grade") GradePojo grade, BindingResult result, Model model) {
         if (result.hasErrors())
-            return "validate/form";
+            return "intro/validate/form";
 
         int index = getGradeIndex(grade.getId());
         if (index == Constants.NOT_FOUND) {
@@ -43,7 +43,7 @@ public class ValidateController {
     @GetMapping("/validate/grades")
     public String getGrades(Model model) {
         model.addAttribute("grades", studentGrades);
-        return "validate/grades";
+        return "intro/validate/grades";
     }
 
     public int getGradeIndex(String id) {

@@ -1,5 +1,7 @@
-package com.alex_d_bondarev.hello_spring;
+package com.alex_d_bondarev.hello_spring.intro;
 
+import com.alex_d_bondarev.hello_spring.Constants;
+import com.alex_d_bondarev.hello_spring.GradePojo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,13 +21,13 @@ public class BasicController {
     public String getGrade(Model model) {
         GradePojo grade = new GradePojo("Harry", "Potions", "C-");
         model.addAttribute("grade", grade);
-        return "basic/grade";
+        return "intro/basic/grade";
     }
 
     @GetMapping("/basic/grades")
     public String getGrades(Model model) {
         model.addAttribute("grades", studentGrades);
-        return "basic/grades";
+        return "intro/basic/grades";
     }
 
     @GetMapping("/basic/form")
@@ -36,20 +38,20 @@ public class BasicController {
                 index == Constants.NOT_FOUND ? new GradePojo() : studentGrades.get(index)
         );
         model.addAttribute("types", Constants.SCORE_TYPE);
-        return "basic/form";
+        return "intro/basic/form";
     }
 
     @GetMapping(value = "/basic/conditional")
     public String getConditional(Model model) {
         model.addAttribute("sales", 30);
         model.addAttribute("product", "chair");
-        return "basic/conditionals";
+        return "intro/basic/conditionals";
     }
 
     @GetMapping(value = "/basic/utility")
     public String getUtility(Model model) {
         model.addAttribute("menu", "We sell chocolate rice cakes bubble tea");
-        return "basic/utility";
+        return "intro/basic/utility";
     }
 
     @PostMapping(value = "/basic/handleSubmit")
@@ -67,7 +69,7 @@ public class BasicController {
         }
 
         redirectAttributes.addFlashAttribute("status", status);
-        return "redirect:/basic/grades";
+        return "redirect:/intro/basic/grades";
     }
 
     public Integer getGradeIndex(String id) {
