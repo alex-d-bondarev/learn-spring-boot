@@ -3,11 +3,20 @@ package com.alex_d_bondarev.hello_spring.layers.service;
 import com.alex_d_bondarev.hello_spring.Constants;
 import com.alex_d_bondarev.hello_spring.GradePojo;
 import com.alex_d_bondarev.hello_spring.layers.repository.GradeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class GradeService {
-    GradeRepository gradeRepo = new GradeRepository();
+
+    @Autowired
+    public GradeService(GradeRepository gradeRepo){
+        this.gradeRepo = gradeRepo;
+    }
+
+    GradeRepository gradeRepo;
 
     public GradePojo getGrade(int index){
         return gradeRepo.getGrade(index);

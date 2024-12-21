@@ -1,10 +1,12 @@
 package com.alex_d_bondarev.hello_spring.layers.repository;
 
 import com.alex_d_bondarev.hello_spring.GradePojo;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Repository
 public class GradeRepository {
     private List<GradePojo> studentGrades = new ArrayList<>();
 
