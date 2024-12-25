@@ -1,4 +1,4 @@
-package com.alex_d_bondarev.hello_spring;
+package com.alex_d_bondarev.hello_spring.module1;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

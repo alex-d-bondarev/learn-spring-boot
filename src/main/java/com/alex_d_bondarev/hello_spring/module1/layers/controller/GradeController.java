@@ -1,7 +1,7 @@
-package com.alex_d_bondarev.hello_spring.layers.controller;
+package com.alex_d_bondarev.hello_spring.module1.layers.controller;
 
-import com.alex_d_bondarev.hello_spring.GradePojo;
-import com.alex_d_bondarev.hello_spring.layers.service.GradeService;
+import com.alex_d_bondarev.hello_spring.module1.GradePojo;
+import com.alex_d_bondarev.hello_spring.module1.layers.service.GradeService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

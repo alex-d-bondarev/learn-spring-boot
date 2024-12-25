@@ -1,6 +1,6 @@
-package com.alex_d_bondarev.hello_spring.layers.repository;
+package com.alex_d_bondarev.hello_spring.module1.layers.repository;
 
-import com.alex_d_bondarev.hello_spring.GradePojo;
+import com.alex_d_bondarev.hello_spring.module1.GradePojo;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;

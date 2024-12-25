@@ -1,8 +1,8 @@
-package com.alex_d_bondarev.hello_spring.layers.service;
+package com.alex_d_bondarev.hello_spring.module1.layers.service;
 
-import com.alex_d_bondarev.hello_spring.Constants;
-import com.alex_d_bondarev.hello_spring.GradePojo;
-import com.alex_d_bondarev.hello_spring.layers.repository.GradeRepository;
+import com.alex_d_bondarev.hello_spring.module1.Constants;
+import com.alex_d_bondarev.hello_spring.module1.GradePojo;
+import com.alex_d_bondarev.hello_spring.module1.layers.repository.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

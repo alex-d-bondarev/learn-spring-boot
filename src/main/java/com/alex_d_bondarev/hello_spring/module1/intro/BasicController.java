@@ -1,7 +1,7 @@
-package com.alex_d_bondarev.hello_spring.intro;
+package com.alex_d_bondarev.hello_spring.module1.intro;
 
-import com.alex_d_bondarev.hello_spring.Constants;
-import com.alex_d_bondarev.hello_spring.GradePojo;
+import com.alex_d_bondarev.hello_spring.module1.Constants;
+import com.alex_d_bondarev.hello_spring.module1.GradePojo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

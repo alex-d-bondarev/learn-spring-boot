@@ -1,9 +1,9 @@
-package com.alex_d_bondarev.hello_spring.web;
+package com.alex_d_bondarev.hello_spring.module1.web;
 
 import java.util.Arrays;
 import java.util.List;
 
-import com.alex_d_bondarev.hello_spring.GradePojo;
+import com.alex_d_bondarev.hello_spring.module1.GradePojo;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
