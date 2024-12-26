@@ -34,9 +34,14 @@ public class ContactController {
     }
 
     @GetMapping("/contact/{id}")
-    public ResponseEntity<Contact> getContact(@PathVariable String id) throws NoContactException {
-        Contact contact = contactService.getContactById(id);
-        return new ResponseEntity<>(contact, HttpStatus.OK);
+    public ResponseEntity<Contact> getContact(@PathVariable String id) {
+        Contact contact = null;
+        try {
+            contact = contactService.getContactById(id);
+            return new ResponseEntity<>(contact, HttpStatus.OK);
+        } catch (NoContactException ex) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @PostMapping("/contact")
@@ -46,14 +51,22 @@ public class ContactController {
     }
 
     @PutMapping("/contact/{id}")
-    public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody Contact contact) throws NoContactException {
-        contactService.updateContact(id, contact);
-        return new ResponseEntity<>(contactService.getContactById(id), HttpStatus.OK);
+    public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody Contact contact) {
+        try {
+            contactService.updateContact(id, contact);
+            return new ResponseEntity<>(contactService.getContactById(id), HttpStatus.OK);
+        } catch (NoContactException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/contact/{id}")
-    public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) throws NoContactException {
-        contactService.deleteContact(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) {
+        try {
+            contactService.deleteContact(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (NoContactException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
