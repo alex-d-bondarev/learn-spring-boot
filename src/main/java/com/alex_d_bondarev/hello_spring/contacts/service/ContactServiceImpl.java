@@ -3,7 +3,7 @@ package com.alex_d_bondarev.hello_spring.contacts.service;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import com.alex_d_bondarev.hello_spring.contacts.exception.NoContactException;
+import com.alex_d_bondarev.hello_spring.contacts.exception.ContactNotFoundException;
 import com.alex_d_bondarev.hello_spring.contacts.pojo.Contact;
 import com.alex_d_bondarev.hello_spring.contacts.repository.ContactRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,11 @@ public class ContactServiceImpl implements ContactService {
     }
 
 
-    private int findIndexById(String id) throws NoContactException {
-        return IntStream.range(0, contactRepository.getContacts().size()).filter(index -> contactRepository.getContacts().get(index).getId().equals(id)).findFirst().orElseThrow(NoContactException::new);
+    private int findIndexById(String id) {
+        return IntStream.range(0, contactRepository.getContacts().size())
+                .filter(index -> contactRepository.getContacts().get(index).getId().equals(id))
+                .findFirst()
+                .orElseThrow(() -> new ContactNotFoundException(id));
     }
 
     @Override
@@ -31,7 +34,7 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Contact getContactById(String id) throws NoContactException {
+    public Contact getContactById(String id) {
         return contactRepository.getContact(findIndexById(id));
     }
 
@@ -41,13 +44,13 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public void updateContact(String id, Contact contact) throws NoContactException {
+    public void updateContact(String id, Contact contact) {
         contact.setId(id);
         contactRepository.updateContact(findIndexById(id), contact);
     }
 
     @Override
-    public void deleteContact(String id) throws NoContactException {
+    public void deleteContact(String id) {
         contactRepository.deleteContact(findIndexById(id));
     }
 }
