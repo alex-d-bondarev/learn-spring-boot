@@ -1,5 +1,6 @@
 package com.alex_d_bondarev.hello_spring.contacts.repository;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -10,11 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ContactRepository {
 
-    private List<Contact> contacts = Arrays.asList(
-            new Contact("123", "John Snow", "41329123"),
-            new Contact("456", "Tyrion Lannister", "52430234"),
-            new Contact("789", "The Hound", "63541345")
-    );
+    private List<Contact> contacts = new ArrayList<>();
 
     public List<Contact> getContacts() {
         return contacts;
