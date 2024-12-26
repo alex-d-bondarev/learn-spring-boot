@@ -2,34 +2,39 @@ package com.alex_d_bondarev.hello_spring.contacts.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class ErrorResponse {
 
-    private String message;
+    private List<String> messages;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
-    private LocalDateTime timestamp2;
+    private LocalDateTime timestamp;
 
-    public ErrorResponse(String message) {
-        this.timestamp2 = LocalDateTime.now();
-        this.message = message;
+    public ErrorResponse(String messages) {
+        this.timestamp = LocalDateTime.now();
+        this.messages = List.of(messages);
     }
 
-    public String getMessage() {
-        return message;
+    public ErrorResponse(List<String> messages) {
+        this.timestamp = LocalDateTime.now();
+        this.messages = messages;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public List<String> getMessages() {
+        return messages;
     }
 
-    public LocalDateTime getTimestamp2() {
-        return timestamp2;
+    public void setMessages(List<String> messages) {
+        this.messages = messages;
     }
 
-    public void setTimestamp2(LocalDateTime timestamp2) {
-        this.timestamp2 = timestamp2;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(LocalDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 }

@@ -1,11 +1,17 @@
 package com.alex_d_bondarev.hello_spring.contacts.pojo;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.UUID;
 
 public class Contact {
 
     private String id;
+
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+
+    @NotBlank(message = "Number cannot be blank")
     private String phoneNumber;
 
     public Contact() {

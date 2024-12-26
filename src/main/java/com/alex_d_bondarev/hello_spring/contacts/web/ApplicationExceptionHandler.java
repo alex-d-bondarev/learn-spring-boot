@@ -6,10 +6,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class ApplicationExceptionHandler {
 
     @ExceptionHandler(ContactNotFoundException.class)
@@ -19,7 +19,7 @@ public class ApplicationExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<Object> handleException(HttpMessageNotReadableException exception, HttpServletRequest request) {
+    public ResponseEntity<Object> handleMessageNotReadableException(HttpMessageNotReadableException exception, HttpServletRequest request) {
         String message = "Missing request body";
         ErrorResponse errorResponse = new ErrorResponse(message);
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
