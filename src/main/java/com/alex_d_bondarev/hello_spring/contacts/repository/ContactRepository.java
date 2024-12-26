@@ -1,7 +1,6 @@
 package com.alex_d_bondarev.hello_spring.contacts.repository;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import com.alex_d_bondarev.hello_spring.contacts.pojo.Contact;
@@ -11,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ContactRepository {
 
-    private List<Contact> contacts = new ArrayList<>();
+    private final List<Contact> contacts = new ArrayList<>();
 
     public List<Contact> getContacts() {
         return contacts;

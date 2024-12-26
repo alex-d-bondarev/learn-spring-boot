@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GradeController {
 
-    GradeService gradeService;
+    private final GradeService gradeService;
 
     @Autowired
     public GradeController(GradeService gradeService) {

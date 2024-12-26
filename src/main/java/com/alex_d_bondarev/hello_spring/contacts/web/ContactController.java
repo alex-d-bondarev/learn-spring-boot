@@ -1,5 +1,6 @@
 package com.alex_d_bondarev.hello_spring.contacts.web;
 
+import com.alex_d_bondarev.hello_spring.contacts.exception.NoContactException;
 import com.alex_d_bondarev.hello_spring.contacts.pojo.Contact;
 import com.alex_d_bondarev.hello_spring.contacts.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,12 @@ import java.util.List;
 @RestController
 public class ContactController {
 
+    private final ContactService contactService;
+
     @Autowired
-    private ContactService contactService;
+    public ContactController(ContactService contactService) {
+        this.contactService = contactService;
+    }
 
     @GetMapping("/contact/all")
     public ResponseEntity<List<Contact>> getContacts() {
@@ -29,7 +34,7 @@ public class ContactController {
     }
 
     @GetMapping("/contact/{id}")
-    public ResponseEntity<Contact> getContact(@PathVariable String id) {
+    public ResponseEntity<Contact> getContact(@PathVariable String id) throws NoContactException {
         Contact contact = contactService.getContactById(id);
         return new ResponseEntity<>(contact, HttpStatus.OK);
     }
@@ -41,13 +46,13 @@ public class ContactController {
     }
 
     @PutMapping("/contact/{id}")
-    public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody Contact contact) {
+    public ResponseEntity<Contact> updateContact(@PathVariable String id, @RequestBody Contact contact) throws NoContactException {
         contactService.updateContact(id, contact);
         return new ResponseEntity<>(contactService.getContactById(id), HttpStatus.OK);
     }
 
     @DeleteMapping("/contact/{id}")
-    public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) {
+    public ResponseEntity<HttpStatus> deleteContact(@PathVariable String id) throws NoContactException {
         contactService.deleteContact(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
