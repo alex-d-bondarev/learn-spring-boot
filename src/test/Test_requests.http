@@ -1,0 +1,49 @@
+# @name getContacts
+GET http://localhost:8080/contact/all HTTP/1.1
+
+###
+
+# @name createJohnContact
+POST http://localhost:8080/contact HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John Snow",
+  "phoneNumber": "Nothing"
+}
+
+@johnId = {{createJohnContact.response.body.$.id}}
+
+###
+
+# @name createBobContact
+POST http://localhost:8080/contact HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Bob",
+  "phoneNumber": "123456789"
+}
+
+@bobId = {{createBobContact.response.body.$.id}}
+
+###
+
+# @name getContact
+GET http://localhost:8080/contact/{{johnId}} HTTP/1.1
+
+###
+
+# @name updateContact
+PUT http://localhost:8080/contact/{{johnId}} HTTP/1.1
+content-type: application/json
+
+{
+  "name": "John Snow",
+  "phoneNumber": "Something"
+}
+
+###
+
+# @name deleteContact
+DELETE http://localhost:8080/contact/{{johnId}} HTTP/1.1
