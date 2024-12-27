@@ -36,8 +36,8 @@ class GradeServiceTest {
 
         List<GradePojo> grades = gradeService.getGrades();
 
-        assertEquals("Harry", grades.getFirst().getName());
-        assertEquals("Arithmancy", grades.getLast().getSubject());
+        assertEquals("Harry", grades.get(0).getName());
+        assertEquals("Arithmancy", grades.get(1).getSubject());
     }
 
     @Test

@@ -1,7 +1,7 @@
 package com.alex_d_bondarev.hello_spring.contacts.pojo;
 
-import jakarta.validation.constraints.NotBlank;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Contact {

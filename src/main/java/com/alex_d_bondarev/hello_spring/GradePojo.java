@@ -3,8 +3,9 @@ package com.alex_d_bondarev.hello_spring;
 import java.util.Date;
 import java.util.UUID;
 
-import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotBlank;
 
 public class GradePojo {
     @NotBlank(message = "Name cannot be blank")
