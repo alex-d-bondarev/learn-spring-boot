@@ -2,13 +2,12 @@ package com.alex_d_bondarev.hello_spring.contacts.web;
 
 import com.alex_d_bondarev.hello_spring.contacts.exception.ContactNotFoundException;
 import com.alex_d_bondarev.hello_spring.contacts.exception.ErrorResponse;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
-import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ApplicationExceptionHandler {

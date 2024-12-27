@@ -2,6 +2,7 @@ package com.alex_d_bondarev.hello_spring.layers.controller;
 
 import com.alex_d_bondarev.hello_spring.GradePojo;
 import com.alex_d_bondarev.hello_spring.layers.service.GradeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import javax.validation.Valid;
 
 
 @Controller

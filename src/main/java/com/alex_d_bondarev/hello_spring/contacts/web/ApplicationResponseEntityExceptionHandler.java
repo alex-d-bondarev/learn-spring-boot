@@ -3,6 +3,7 @@ package com.alex_d_bondarev.hello_spring.contacts.web;
 import com.alex_d_bondarev.hello_spring.contacts.exception.ErrorResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -15,10 +16,9 @@ import java.util.List;
 
 @ControllerAdvice
 public class ApplicationResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
-
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
-            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+            MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatusCode status, WebRequest request) {
         List<String> messages = new ArrayList<>();
 
         for (ObjectError error : ex.getBindingResult().getAllErrors()) {
