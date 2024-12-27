@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-public class GradeController {
+public class GradeControllerV1 {
 
     private final GradeService gradeService;
 
     @Autowired
-    public GradeController(GradeService gradeService) {
+    public GradeControllerV1(GradeService gradeService) {
         this.gradeService = gradeService;
     }
 

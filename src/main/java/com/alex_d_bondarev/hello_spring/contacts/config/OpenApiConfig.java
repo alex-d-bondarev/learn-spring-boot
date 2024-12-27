@@ -13,6 +13,6 @@ public class OpenApiConfig {
         return new OpenAPI()
               .info(new Info().title("Hello Spring")
               .description("Follow a Spring Boot course")
-              .version("1.0.0"));
+              .version("0.1.0"));
     }
 }
